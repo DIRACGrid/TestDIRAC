@@ -16,7 +16,8 @@ class IntegrationTest( unittest.TestCase ):
     gLogger.setLevel( 'DEBUG' )
 
   def tearDown( self ):
-    cleanTestDir()
+#    cleanTestDir()
+    pass
 
 
 class FailingUserJobTestCase( IntegrationTest ):

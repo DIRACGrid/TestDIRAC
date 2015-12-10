@@ -11,7 +11,7 @@ parseCommandLine()
 
 import unittest
 
-from DIRAC.Core.Utilities.ComponentsInstaller import gComponentsInstaller
+from DIRAC.Core.Utilities.ComponentInstaller import gComponentInstaller
 from DIRAC.ConfigurationSystem.Client.CSAPI import CSAPI
 from DIRAC.FrameworkSystem.Client.ComponentMonitoringClient import ComponentMonitoringClient
 from DIRAC.FrameworkSystem.Client.SystemAdministratorClientCLI import SystemAdministratorClientCLI
@@ -135,7 +135,7 @@ class ComponentInstallationChain( TestComponentInstallation ):
 
   def testDatabase( self ):
 
-    gComponentsInstaller.setMySQLPasswords( self.rootPwd, self.diracPwd )
+    gComponentInstaller.setMySQLPasswords( self.rootPwd, self.diracPwd )
 
     # Install database
     self.client.do_install( 'db FTSDB' )

@@ -10,7 +10,7 @@ import time
 from DIRAC import gLogger
 from DIRAC.Core.Security.ProxyInfo import getProxyInfo
 
-from TestDIRAC.Utilities.testJobDefinitions import helloWorld
+from TestDIRAC.Utilities.testJobDefinitions import helloWorld, mpJob
 
 gLogger.setLevel( 'VERBOSE' )
 
@@ -35,6 +35,11 @@ class submitSuccess( GridSubmissionTestCase ):
     res = helloWorld()
     self.assert_( res['OK'] )
     jobsSubmittedList.append( res['Value'] )
+
+    res = mpJob()
+    self.assert_( res['OK'] )
+    jobsSubmittedList.append( res['Value'] )
+
 
 
 # FIXME: This is also in the extension...? To try!

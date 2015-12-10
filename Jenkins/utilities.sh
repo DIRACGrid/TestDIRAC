@@ -5,6 +5,25 @@
 # Path to ci config files
 CI_CONFIG=$WORKSPACE/TestDIRAC/Jenkins/config/ci
 
+# default: this function fixes some default values 
+
+function default(){
+
+	if [ -z $JENKINS_SITE ]
+	then
+		JENKINS_SITE='DIRAC.Jenkins.ch'
+	fi
+	
+	if [ -z $JENKINS_CE ]
+	then
+		JENKINS_CE='jenkins.cern.ch'
+	fi
+
+	if [ -z $JENKINS_QUEUE ]
+	then
+		JENKINS_QUEUE='jenkins-queue_not_important'
+	fi
+}
 
 
 # Finders... functions devoted to find DBs, Services, versions, etc..
