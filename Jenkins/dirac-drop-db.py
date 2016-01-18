@@ -15,7 +15,7 @@ if len( args ) < 1:
   Script.showHelp()
   exit( -1 )
 
-from DIRAC.Core.Utilities.ComponentInstaller import gComponentInstaller
+from DIRAC.FrameworkSystem.Client.ComponentInstaller import gComponentInstaller
 gComponentInstaller.getMySQLPasswords()
 for db in args:
   print gComponentInstaller.execMySQL( "DROP DATABASE IF EXISTS %s" % db )

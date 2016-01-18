@@ -11,7 +11,7 @@ parseCommandLine()
 
 import unittest
 
-from DIRAC.Core.Utilities.ComponentInstaller import gComponentInstaller
+from DIRAC.FrameworkSystem.Client.ComponentInstaller import gComponentInstaller
 from DIRAC.ConfigurationSystem.Client.CSAPI import CSAPI
 from DIRAC.FrameworkSystem.Client.ComponentMonitoringClient import ComponentMonitoringClient
 from DIRAC.FrameworkSystem.Client.SystemAdministratorClientCLI import SystemAdministratorClientCLI
@@ -90,13 +90,13 @@ class ComponentInstallationChain( TestComponentInstallation ):
     # Check installation in database
     if not service1Present:
       result = self.monitoringClient.getInstallations( { 'Instance': 'Notification', 'UnInstallationTime': None, 'InstalledBy': self.user },
-                                                      { 'System': 'Framework', 'Type': 'service', 'Module': 'Notification' },
-                                                      {}, False )
+                                                       { 'System': 'Framework', 'Type': 'service', 'Module': 'Notification' },
+                                                       {}, False )
     else:
       # We dont know who made the previous installation
       result = self.monitoringClient.getInstallations( { 'Instance': 'Notification', 'UnInstallationTime': None },
-                                                      { 'System': 'Framework', 'Type': 'service', 'Module': 'Notification' },
-                                                      {}, False )
+                                                       { 'System': 'Framework', 'Type': 'service', 'Module': 'Notification' },
+                                                       {}, False )
 
     self.assert_( result[ 'OK' ] and len( result[ 'Value' ] ) == 1 )
 
@@ -147,8 +147,8 @@ class ComponentInstallationChain( TestComponentInstallation ):
 
     # Check in database
     result = self.monitoringClient.getInstallations( { 'Instance': 'FTSDB', 'UnInstallationTime': None, 'InstalledBy': self.user },
-                                                      { 'System': 'DataManagement', 'Type': 'DB', 'Module': 'FTSDB' },
-                                                      {}, False )
+                                                     { 'System': 'DataManagement', 'Type': 'DB', 'Module': 'FTSDB' },
+                                                     {}, False )
     self.assert_( result[ 'OK' ] and len( result[ 'Value' ] ) == 1 )
 
     # Uninstall database
